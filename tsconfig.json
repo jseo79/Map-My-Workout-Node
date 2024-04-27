@@ -4,7 +4,9 @@
 		"lib": ["es5", "dom"],
 		"types": ["node"],
 		"module": "ESNext",
-		"moduleResolution": "node"
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"outDir": "./dist"
 	},
-	"include": ["**/*.ts"]
+	"include": ["**/*.ts", "main.ts"]
 }
