@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": ["es5", "dom"],
+		"types": ["node"],
+		"module": "ESNext",
+		"moduleResolution": "node"
+	},
+	"include": ["**/*.ts"]
+}
