@@ -1,12 +1,21 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
-		"lib": ["es5", "dom"],
+		"target": "es2017",
+		"lib": ["es6"],
 		"types": ["node"],
-		"module": "ESNext",
+		"module": "commonJS",
 		"moduleResolution": "node",
-		"allowSyntheticDefaultImports": true,
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"baseUrl": ".",
 		"outDir": "./dist"
 	},
-	"include": ["**/*.ts", "main.ts"]
+	"include": ["src/**/*", "main.ts"]
 }
