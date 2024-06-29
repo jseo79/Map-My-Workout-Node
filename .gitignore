@@ -1,5 +1,8 @@
 .DS_Store
 node_modules
-dist
+backend/node_modules
+backend/dist
+backend/yarn.lock
+frontend/node_modules
 .env
 .vscode

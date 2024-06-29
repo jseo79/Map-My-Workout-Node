@@ -15,7 +15,7 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"baseUrl": ".",
-		"outDir": "./dist"
+		"outDir": "backend/dist"
 	},
-	"include": ["src/**/*", "main.ts"]
+	"include": ["backend/src/modules/**/*", "backend/main.ts"]
 }
