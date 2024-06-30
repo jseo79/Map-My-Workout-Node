@@ -1,5 +1,6 @@
 import L from 'leaflet';
 import React, { Component } from 'react';
+import styles from './Map.module.css';
 
 class Map extends Component {
 	private map: L.Map | undefined;
@@ -35,8 +36,7 @@ class Map extends Component {
 	}
 
 	render(): JSX.Element {
-		return <div id="map" style={{ height: '400px' }}></div>;
+		return <div id="map" className={styles.map}></div>;
 	}
 }
-
 export default Map;

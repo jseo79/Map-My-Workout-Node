@@ -5,7 +5,6 @@ const Sidebar: React.FC = () => {
 	return (
 		<div className={styles.sidebar}>
 			<label className={styles.logo}> Map My Workout</label>
-
 			<ul className={styles.workouts}>
 				<form className={`${styles.form} ${styles.hidden}`}>
 					<div className={styles.form__row}>
