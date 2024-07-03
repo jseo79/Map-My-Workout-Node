@@ -1,12 +1,20 @@
 import React from 'react';
 import styles from './Sidebar.module.css';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+	showForm: boolean;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ showForm }) => {
 	return (
 		<div className={styles.sidebar}>
-			<label className={styles.logo}> Map My Workout</label>
+			<label className={styles.logo}>Map My Workout</label>
 			<ul className={styles.workouts}>
-				<form className={`${styles.form} ${styles.hidden}`}>
+				<form
+					className={`${styles.form} ${
+						showForm ? '' : styles.hidden
+					}`}
+				>
 					<div className={styles.form__row}>
 						<label className={styles.form__label}>Type</label>
 						<select

@@ -1,14 +1,8 @@
-import Sidebar from './components/Sidebar/Sidebar';
-import Map from './components/Map/Map.tsx';
+import Container from './components/Container/Container.tsx';
 import './Global.css';
 
 function App() {
-	return (
-		<div className="container">
-			<Sidebar />
-			<Map />
-		</div>
-	);
+	return <Container />;
 }
 
 export default App;

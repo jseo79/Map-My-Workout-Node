@@ -1,42 +1,42 @@
 import L from 'leaflet';
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import styles from './Map.module.css';
 
-class Map extends Component {
-	private map: L.Map | undefined;
+interface MapProps {
+	onMapClick: (latLng: L.LatLng) => void;
+}
 
-	componentDidMount() {
-		this.getPosition();
-	}
+const Map: React.FC<MapProps> = ({ onMapClick }) => {
+	useEffect(() => {
+		getPosition();
+	}, []);
 
-	private getPosition(): void {
+	const getPosition = () => {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(
-				this.loadMap.bind(this),
-				() => {
-					alert('Could not get your location');
-				}
-			);
+			navigator.geolocation.getCurrentPosition(loadMap, () => {
+				alert('Could not get your location');
+			});
 		}
-	}
+	};
 
-	private loadMap(position: GeolocationPosition): void {
-		const { latitude } = position.coords;
-		const { longitude } = position.coords;
+	const loadMap = (position: GeolocationPosition) => {
+		const { latitude, longitude } = position.coords;
 		const coords = L.latLng(latitude, longitude);
 
-		this.map = L.map('map').setView(coords, 13);
+		const map = L.map('map').setView(coords, 13);
 
 		L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution:
 				'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-		}).addTo(this.map);
+		}).addTo(map);
 
-		console.log('Map loaded with position:', coords);
-	}
+		map.on('click', (e: L.LeafletMouseEvent) => {
+			onMapClick(e.latlng);
+			console.log(e.latlng);
+		});
+	};
 
-	render(): JSX.Element {
-		return <div id="map" className={styles.map}></div>;
-	}
-}
+	return <div id="map" className={styles.map}></div>;
+};
+
 export default Map;
