@@ -14,7 +14,7 @@ const MapContainer: React.FC = () => {
 
 	return (
 		<div className={styles.container}>
-			<Sidebar showForm={showForm} />
+			<Sidebar showForm={showForm} latLng={latLng} />
 			<Map onMapClick={handleMapClick} />
 		</div>
 	);
