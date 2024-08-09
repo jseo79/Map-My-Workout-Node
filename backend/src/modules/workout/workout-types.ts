@@ -10,4 +10,9 @@ export interface Workout {
 	latitude: number;
 	longitude: number;
 	createdOn: string;
+	cadence?: number;
+	elevation?: number;
+	pace?: number;
+	speed?: number;
+	description?: string;
 }

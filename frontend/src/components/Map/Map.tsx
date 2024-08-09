@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import styles from './Map.module.css';
 
 interface MapProps {
-	onMapClick: (latLng: L.LatLng) => void;
+	onMapClick: (latLng: L.LeafletMouseEvent) => void;
 }
 
 const Map: React.FC<MapProps> = ({ onMapClick }) => {
@@ -31,7 +31,7 @@ const Map: React.FC<MapProps> = ({ onMapClick }) => {
 		}).addTo(map);
 
 		map.on('click', (e: L.LeafletMouseEvent) => {
-			onMapClick(e.latlng);
+			onMapClick(e);
 			console.log(e.latlng);
 		});
 	};
