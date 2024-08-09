@@ -18,5 +18,5 @@
 		"jsx": "react",
 		"outDir": "backend/dist"
 	},
-	"include": ["backend/src/modules/**/*", "backend/main.ts"]
+	"include": ["src/modules/**/*", "main.ts"]
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import L from 'leaflet';
 import styles from './Sidebar.module.css';
 import { Workout } from '../../../../backend/src/modules/workout/workout-types.ts';
@@ -61,7 +61,6 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 			}
 
 			workout = {
-				id: Date.now(),
 				userId: 1,
 				type: 'running',
 				duration: durationValue,
@@ -86,7 +85,6 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 			}
 
 			workout = {
-				id: Date.now(),
 				userId: 1,
 				type: 'biking',
 				duration: durationValue,
@@ -99,22 +97,20 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 				latitude: lat,
 				longitude: lng,
 				createdOn: new Date().toISOString(),
-				elevation: elevationValue,
+				elevationGain: elevationValue,
 			};
 		}
 
 		if (workout) {
-			// const response = await axios.post(
-			// 	'http://localhost:5001/api/workouts',
-			// 	workout
-			// );
-			// console.log('Workout added:', response.data);
+			const response = await axios.post(
+				'http://localhost:5001/api/workouts',
+				workout
+			);
+			console.log('Workout added:', response.data);
 			setWorkouts([...workouts, workout]);
 		}
 
-		setTimeout(function () {
-			console.log(workouts);
-		}, 4000);
+		console.log(workouts);
 
 		hideFormAndResetValues();
 	};

@@ -1,5 +1,7 @@
 export interface Workout {
-	id: number;
+	// Backend automatically increments id so it is not needed initially in the frontend
+	id?: number;
+
 	userId: number;
 	type: 'running' | 'biking';
 	duration: number;
@@ -10,8 +12,10 @@ export interface Workout {
 	latitude: number;
 	longitude: number;
 	createdOn: string;
+
+	// These fields are calculated by the backend based on the type of workout, and the description is calculated based on some of the workout details
 	cadence?: number;
-	elevation?: number;
+	elevationGain?: number;
 	pace?: number;
 	speed?: number;
 	description?: string;
