@@ -10,4 +10,13 @@ export default class WorkoutModel {
 			throw e;
 		}
 	}
+
+	static async getAllWorkouts() {
+		try {
+			return knex<Workout>('workouts').select('*');
+		} catch (e) {
+			console.log(e);
+			throw e;
+		}
+	}
 }

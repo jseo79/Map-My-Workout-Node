@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "dist/main.js",
 	"scripts": {
-		"start": "ts-node main.ts",
+		"start": "nodemon --exec ts-node main.ts",
 		"build": "tsc --project tsconfig.json",
 		"db_up": "knex migrate:latest",
 		"dev_down": "knex migrate:rollback --all",
@@ -19,6 +19,7 @@
 		"eslint-config-airbnb": "19.0.4",
 		"eslint-config-airbnb-base": "15.0.0",
 		"eslint-plugin-import": "^2.25.2",
+		"nodemon": "^3.1.4",
 		"ts-node": "^10.9.2",
 		"tslib": "^2.6.2",
 		"typescript": "^5.4.5"

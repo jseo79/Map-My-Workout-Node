@@ -111,7 +111,10 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 			// console.log('Workout added:', response.data);
 			setWorkouts([...workouts, workout]);
 		}
-		console.log(workouts);
+
+		setTimeout(function () {
+			console.log(workouts);
+		}, 4000);
 
 		hideFormAndResetValues();
 	};

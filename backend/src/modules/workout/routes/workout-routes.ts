@@ -3,8 +3,8 @@ import WorkoutController from '../controllers/workout-controller';
 
 const workoutRoutes = express.Router();
 
-workoutRoutes.get('workout', (req, res) => {});
+workoutRoutes.get('/workouts', WorkoutController.getAllWorkouts);
 
-workoutRoutes.post('/workout', WorkoutController.addWorkout);
+workoutRoutes.post('/workouts', WorkoutController.addWorkout);
 
 export default workoutRoutes;

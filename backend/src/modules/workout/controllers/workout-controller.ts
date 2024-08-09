@@ -13,4 +13,13 @@ export default class WorkoutController {
 			console.log(e);
 		}
 	}
+
+	static async getAllWorkouts(req: Request, res: Response) {
+		try {
+			const workouts = await WorkoutModel.getAllWorkouts();
+			return res.send(workouts);
+		} catch (e) {
+			console.log(e);
+		}
+	}
 }
