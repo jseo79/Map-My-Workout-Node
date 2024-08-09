@@ -15,7 +15,7 @@ export interface Workout {
 
 	// These fields are calculated by the backend based on the type of workout, and the description is calculated based on some of the workout details
 	cadence?: number;
-	elevationGain?: number;
+	elevation?: number;
 	pace?: number;
 	speed?: number;
 	description?: string;

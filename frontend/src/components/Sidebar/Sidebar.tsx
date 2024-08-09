@@ -97,7 +97,7 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 				latitude: lat,
 				longitude: lng,
 				createdOn: new Date().toISOString(),
-				elevationGain: elevationValue,
+				elevation: elevationValue,
 			};
 		}
 
