@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import L from 'leaflet';
 import styles from './Sidebar.module.css';
 import { Workout } from '../../../../backend/src/modules/workout/workout-types.ts';
@@ -104,11 +104,11 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 		}
 
 		if (workout) {
-			const response = await axios.post(
-				'http://localhost:5001/api/workouts',
-				workout
-			);
-			console.log('Workout added:', response.data);
+			// const response = await axios.post(
+			// 	'http://localhost:5001/api/workouts',
+			// 	workout
+			// );
+			// console.log('Workout added:', response.data);
 			setWorkouts([...workouts, workout]);
 		}
 		console.log(workouts);
