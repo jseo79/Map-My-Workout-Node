@@ -1,6 +1,6 @@
 import React from 'react';
 import { Workout } from '../../../../backend/src/modules/workout/workout-types.ts';
-import styles from './Sidebar.module.css';
+import styles from './WorkoutItem.module.css';
 
 interface WorkoutItemProps {
 	workout: Workout;
@@ -12,7 +12,6 @@ const WorkoutItem: React.FC<WorkoutItemProps> = ({ workout }) => {
 			className={`${styles.workout} ${
 				styles[`workout--${workout.type}`]
 			}`}
-			data-id={workout.id}
 		>
 			<button className={styles.close_buttons} type="button">
 				x
