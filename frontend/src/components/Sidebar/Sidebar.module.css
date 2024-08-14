@@ -85,7 +85,7 @@
 	gap: 0.5rem 2.5rem;
 	height: 9.25rem;
 	opacity: 1;
-	/* transition: all 0.5s, transform 1ms; */
+	transition: all 0.5s, transform 1ms;
 }
 
 .form.hidden {
