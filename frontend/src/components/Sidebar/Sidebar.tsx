@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import L from 'leaflet';
 import styles from './Sidebar.module.css';
@@ -9,15 +9,22 @@ interface SidebarProps {
 	showForm: boolean;
 	latLng: L.LatLng | null;
 	hideForm: () => void;
+	cursorOnDistance: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+	showForm,
+	latLng,
+	hideForm,
+	cursorOnDistance,
+}) => {
 	const [workoutType, setWorkoutType] = useState('running');
 	const [distance, setDistance] = useState('');
 	const [duration, setDuration] = useState('');
 	const [cadence, setCadence] = useState('');
 	const [elevation, setElevation] = useState('');
 	const [workouts, setWorkouts] = useState<Workout[]>([]);
+	const distanceRef = useRef<HTMLInputElement | null>(null);
 
 	const handleWorkoutTypeChange = (
 		e: React.ChangeEvent<HTMLSelectElement>
@@ -114,6 +121,13 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 		console.log('Workouts:', workouts);
 	};
 
+	useEffect(() => {
+		console.log('cursorOnDistance:', cursorOnDistance);
+		if (cursorOnDistance && distanceRef.current) {
+			setTimeout(() => distanceRef.current?.focus(), 100);
+		}
+	}, [cursorOnDistance]);
+
 	return (
 		<div className={styles.sidebar}>
 			<label className={styles.logo}>Map My Workout</label>
@@ -139,6 +153,7 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 						value={distance}
 						onChange={(e) => setDistance(e.target.value)}
 						placeholder="mile"
+						ref={distanceRef}
 					/>
 				</div>
 				<div className={styles.form__row}>

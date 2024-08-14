@@ -7,11 +7,17 @@ import L from 'leaflet';
 const MapContainer: React.FC = () => {
 	const [showForm, setShowForm] = useState(false);
 	const [latLng, setLatLng] = useState<L.LatLng | null>(null);
+	const [cursorOnDistance, setCursorOnDistance] = useState(false);
 
 	const handleMapClick = (event: L.LeafletMouseEvent) => {
 		const latlng = event.latlng;
 		setLatLng(latlng);
 		setShowForm(true);
+		setCursorOnDistance(true);
+
+		setTimeout(() => {
+			setCursorOnDistance(false);
+		}, 0);
 	};
 
 	const hideForm = () => {
@@ -20,7 +26,12 @@ const MapContainer: React.FC = () => {
 
 	return (
 		<div className={styles.container}>
-			<Sidebar showForm={showForm} latLng={latLng} hideForm={hideForm} />
+			<Sidebar
+				showForm={showForm}
+				latLng={latLng}
+				hideForm={hideForm}
+				cursorOnDistance={cursorOnDistance}
+			/>
 			<Map onMapClick={handleMapClick} />
 		</div>
 	);

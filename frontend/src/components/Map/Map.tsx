@@ -32,7 +32,6 @@ const Map: React.FC<MapProps> = ({ onMapClick }) => {
 
 		map.on('click', (e: L.LeafletMouseEvent) => {
 			onMapClick(e);
-			console.log(e.latlng);
 		});
 	};
 
