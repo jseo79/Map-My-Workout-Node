@@ -9,15 +9,9 @@ interface SidebarProps {
 	showForm: boolean;
 	latLng: L.LatLng | null;
 	hideForm: () => void;
-	cursorOnDistance: boolean;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({
-	showForm,
-	latLng,
-	hideForm,
-	cursorOnDistance,
-}) => {
+const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 	const [workoutType, setWorkoutType] = useState('running');
 	const [distance, setDistance] = useState('');
 	const [duration, setDuration] = useState('');
@@ -122,11 +116,10 @@ const Sidebar: React.FC<SidebarProps> = ({
 	};
 
 	useEffect(() => {
-		console.log('cursorOnDistance:', cursorOnDistance);
-		if (cursorOnDistance && distanceRef.current) {
-			setTimeout(() => distanceRef.current?.focus(), 100);
+		if (showForm && distanceRef.current) {
+			setTimeout(() => distanceRef.current?.focus(), 50);
 		}
-	}, [cursorOnDistance]);
+	}, [showForm]);
 
 	return (
 		<div className={styles.sidebar}>
