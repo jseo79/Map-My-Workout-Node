@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import L from 'leaflet';
 import styles from './Sidebar.module.css';
 import { Workout } from '../../../../backend/src/modules/workout/workout-types.ts';
@@ -9,15 +8,22 @@ interface SidebarProps {
 	showForm: boolean;
 	latLng: L.LatLng | null;
 	hideForm: () => void;
+	workouts: Workout[];
+	addWorkout: (workout: Workout) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+	showForm,
+	latLng,
+	hideForm,
+	workouts,
+	addWorkout,
+}) => {
 	const [workoutType, setWorkoutType] = useState('running');
 	const [distance, setDistance] = useState('');
 	const [duration, setDuration] = useState('');
 	const [cadence, setCadence] = useState('');
 	const [elevation, setElevation] = useState('');
-	const [workouts, setWorkouts] = useState<Workout[]>([]);
 	const distanceRef = useRef<HTMLInputElement | null>(null);
 
 	const handleWorkoutTypeChange = (
@@ -104,12 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({ showForm, latLng, hideForm }) => {
 		}
 
 		if (workout) {
-			const response = await axios.post(
-				'http://localhost:5001/api/workouts',
-				workout
-			);
-			console.log('Workout added:', response.data);
-			setWorkouts((prevWorkouts) => [response.data, ...prevWorkouts]);
+			addWorkout(workout);
 			hideFormAndResetValues();
 		}
 		console.log('Workouts:', workouts);

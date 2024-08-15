@@ -38,43 +38,6 @@
 	gap: 0.75rem 1.5rem;
 }
 
-.workout--running {
-	border-left: 5px solid #00c46a;
-}
-
-.workout--biking {
-	border-left: 5px solid #ffb545;
-}
-
-.workout__title {
-	font-size: 1.7rem;
-	font-weight: 600;
-	grid-column: 1 / -1;
-}
-
-.workout__details {
-	display: flex;
-	align-items: baseline;
-}
-
-.workout__icon {
-	font-size: 1.8rem;
-	margin-right: 0.2rem;
-	height: 0.28rem;
-}
-
-.workout__value {
-	font-size: 1.5rem;
-	margin-right: 0.5rem;
-}
-
-.workout__unit {
-	font-size: 1.1rem;
-	color: #aaa;
-	text-transform: uppercase;
-	font-weight: 800;
-}
-
 .form {
 	background-color: #42484d;
 	border-radius: 5px;
