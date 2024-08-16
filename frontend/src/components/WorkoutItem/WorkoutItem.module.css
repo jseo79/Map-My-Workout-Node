@@ -53,7 +53,12 @@
 	background-color: transparent;
 	border: none;
 	color: #ffffff;
-	right: 5px;
+	right: 1px;
 	font-size: 16px;
 	line-height: 1;
+	width: 15px;
+}
+
+.close_buttons:hover {
+	background-color: #000000;
 }
