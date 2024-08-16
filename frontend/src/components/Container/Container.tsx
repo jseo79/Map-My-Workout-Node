@@ -11,13 +11,14 @@ const MapContainer: React.FC = () => {
 	const [latLng, setLatLng] = useState<L.LatLng | null>(null);
 	const [workouts, setWorkouts] = useState<Workout[]>([]);
 
-	const addWorkout = async (newWorkout: Workout) => {
+	const addWorkout = async (workout: Workout) => {
 		try {
 			const response = await axios.post(
 				'http://localhost:5001/api/workouts',
-				newWorkout
+				workout
 			);
 			setWorkouts((prevWorkouts) => [response.data, ...prevWorkouts]);
+			fetchWorkouts();
 		} catch (error) {
 			console.error('Error adding workout:', error);
 		}
@@ -38,6 +39,18 @@ const MapContainer: React.FC = () => {
 		fetchWorkouts();
 	}, []);
 
+	const handleDeleteWorkout = async (id: number) => {
+		try {
+			await axios.delete(`http://localhost:5001/api/workouts/${id}`);
+
+			setWorkouts((prevWorkouts) =>
+				prevWorkouts.filter((workout) => workout.id !== id)
+			);
+		} catch (error) {
+			console.error('Failed to delete workout:', error);
+		}
+	};
+
 	const handleMapClick = (event: L.LeafletMouseEvent) => {
 		setLatLng(event.latlng);
 		setShowForm(true);
@@ -55,6 +68,7 @@ const MapContainer: React.FC = () => {
 				hideForm={hideForm}
 				addWorkout={addWorkout}
 				workouts={workouts}
+				handleDeleteWorkout={handleDeleteWorkout}
 			/>
 			<Map onMapClick={handleMapClick} workouts={workouts} />
 		</div>

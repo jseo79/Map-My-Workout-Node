@@ -10,6 +10,7 @@ interface SidebarProps {
 	hideForm: () => void;
 	workouts: Workout[];
 	addWorkout: (workout: Workout) => void;
+	handleDeleteWorkout: (id: number) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -18,6 +19,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 	hideForm,
 	workouts,
 	addWorkout,
+	handleDeleteWorkout,
 }) => {
 	const [workoutType, setWorkoutType] = useState('running');
 	const [distance, setDistance] = useState('');
@@ -53,7 +55,6 @@ const Sidebar: React.FC<SidebarProps> = ({
 			console.log('LatLng is null');
 			return;
 		}
-		console.log(latLng);
 		const { lat, lng } = latLng;
 		const distanceValue = +distance;
 		const durationValue = +duration;
@@ -113,7 +114,6 @@ const Sidebar: React.FC<SidebarProps> = ({
 			addWorkout(workout);
 			hideFormAndResetValues();
 		}
-		console.log('Workouts:', workouts);
 	};
 
 	useEffect(() => {
@@ -186,7 +186,15 @@ const Sidebar: React.FC<SidebarProps> = ({
 			</form>
 			<ul className={styles.workouts}>
 				{workouts.map((workout) => (
-					<WorkoutItem key={workout.createdOn} workout={workout} />
+					<WorkoutItem
+						key={workout.createdOn}
+						workout={workout}
+						onDelete={() => {
+							if (workout.id !== undefined) {
+								handleDeleteWorkout(workout.id);
+							}
+						}}
+					/>
 				))}
 			</ul>
 		</div>
