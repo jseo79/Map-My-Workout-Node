@@ -19,4 +19,19 @@ export default class WorkoutModel {
 			throw e;
 		}
 	}
+
+	static async deleteWorkout(id: number) {
+		try {
+			const result = await knex<Workout>('workouts')
+				.where('id', id)
+				.del();
+
+			if (result === 0) {
+				throw new Error('No workout found to delete');
+			}
+		} catch (e) {
+			console.log(e);
+			throw e;
+		}
+	}
 }

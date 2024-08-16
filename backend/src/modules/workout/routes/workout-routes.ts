@@ -7,4 +7,6 @@ workoutRoutes.get('/workouts', WorkoutController.getAllWorkouts);
 
 workoutRoutes.post('/workouts', WorkoutController.addWorkout);
 
+workoutRoutes.delete('/workouts/:id', WorkoutController.deleteWorkout);
+
 export default workoutRoutes;

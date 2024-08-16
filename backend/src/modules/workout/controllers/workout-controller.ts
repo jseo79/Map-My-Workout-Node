@@ -23,4 +23,14 @@ export default class WorkoutController {
 			console.log(e);
 		}
 	}
+
+	static async deleteWorkout(req: Request, res: Response) {
+		try {
+			const id = parseInt(req.params.id, 10);
+			await WorkoutModel.deleteWorkout(id);
+			res.status(204).end();
+		} catch (error) {
+			res.status(500).json({ error: 'Failed to delete workout' });
+		}
+	}
 }
