@@ -31,3 +31,10 @@ a:visited {
 	height: 100%;
 	width: 100%;
 }
+
+.leaflet-popup-content-wrapper {
+	background-color: #feffff;
+	color: #000000;
+	border-radius: 3px;
+	padding-right: 0.6rem;
+}
