@@ -18,6 +18,7 @@ const MapContainer: React.FC = () => {
 				workout
 			);
 			setWorkouts((prevWorkouts) => [response.data, ...prevWorkouts]);
+			// Optionally fetch updated workouts
 			fetchWorkouts();
 		} catch (error) {
 			console.error('Error adding workout:', error);
@@ -42,7 +43,6 @@ const MapContainer: React.FC = () => {
 	const handleDeleteWorkout = async (id: number) => {
 		try {
 			await axios.delete(`http://localhost:5001/api/workouts/${id}`);
-
 			setWorkouts((prevWorkouts) =>
 				prevWorkouts.filter((workout) => workout.id !== id)
 			);

@@ -2,7 +2,6 @@ import L from 'leaflet';
 import React, { useEffect, useRef } from 'react';
 import styles from './Map.module.css';
 import { Workout } from '../../../../backend/src/modules/workout/workout-types.ts';
-import Marker from '../Marker/Marker';
 
 interface MapProps {
 	onMapClick: (latLng: L.LeafletMouseEvent) => void;
@@ -11,6 +10,7 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = ({ onMapClick, workouts }) => {
 	const mapRef = useRef<L.Map | null>(null);
+	const markersRef = useRef<L.Marker[]>([]);
 
 	useEffect(() => {
 		getPosition();
@@ -31,6 +31,8 @@ const Map: React.FC<MapProps> = ({ onMapClick, workouts }) => {
 	};
 
 	const loadMap = (position: GeolocationPosition) => {
+		if (mapRef.current) return;
+
 		const { latitude, longitude } = position.coords;
 		const coords = L.latLng(latitude, longitude);
 
@@ -47,20 +49,43 @@ const Map: React.FC<MapProps> = ({ onMapClick, workouts }) => {
 		});
 	};
 
-	return (
-		<div id="map" className={styles.map}>
-			{mapRef.current &&
-				workouts.map((workout, index) => (
-					<Marker
-						key={index}
-						map={mapRef.current}
-						coords={[workout.latitude, workout.longitude]}
-						type={workout.type}
-						description={workout.description || 'No description'}
-					/>
-				))}
-		</div>
-	);
+	useEffect(() => {
+		if (mapRef.current) {
+			markersRef.current.forEach((marker) =>
+				mapRef.current?.removeLayer(marker)
+			);
+			markersRef.current = [];
+
+			workouts.forEach((workout) => {
+				const popupClass =
+					workout.type === 'running'
+						? styles.runningPopup
+						: styles.bikingPopup;
+
+				const marker = L.marker([workout.latitude, workout.longitude])
+					.addTo(mapRef.current!)
+					.bindPopup(
+						L.popup({
+							maxWidth: 250,
+							minWidth: 100,
+							autoClose: false,
+							closeOnClick: false,
+							className: `${styles.leafletPopup} ${popupClass}`,
+						})
+					)
+					.setPopupContent(
+						`${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${
+							workout.description || 'No description'
+						}`
+					)
+					.openPopup();
+
+				markersRef.current.push(marker);
+			});
+		}
+	}, [workouts]);
+
+	return <div id="map" className={styles.map} />;
 };
 
 export default Map;
