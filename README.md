@@ -2,6 +2,8 @@
 
 Map My Workout is a full-stack web application that allows users to log their runs and bike rides with details including location, distance, duration, and more. The application features an interactive map to visualize workout starting locations.
 
+![Map_My_Workout2](./media/Map_My_Workout2.png)
+
 ## Technologies Used
 
 #### Frontend
@@ -18,9 +20,6 @@ Map My Workout is a full-stack web application that allows users to log their ru
 #### Map Integration
 
 -   Leaflet
-
-! [Map_My_Workout1](./media/Map_My_Workout1.png)
-! [Map_My_Workout2](./media/Map_My_Workout2.png)
 
 ## Inspiration and Takeaways
 
