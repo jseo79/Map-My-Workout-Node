@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "dist/main.js",
 	"scripts": {
-		"start": "nodemon --exec ts-node main.ts",
+		"start": "yarn build && nodemon --exec ts-node main.ts",
 		"build": "tsc --project tsconfig.json",
 		"db_up": "knex migrate:latest",
 		"db_down": "knex migrate:rollback --all",

@@ -16,7 +16,7 @@
 		"sourceMap": true,
 		"baseUrl": ".",
 		"jsx": "react",
-		"outDir": "backend/dist"
+		"outDir": "./dist"
 	},
 	"include": ["src/modules/**/*", "main.ts"]
 }
