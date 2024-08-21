@@ -19,8 +19,8 @@ Map My Workout is a full-stack web application that allows users to log their ru
 
 -   Leaflet
 
-! [Map_My_Workout1](media/Map_My_Workout1.png)
-! [Map_My_Workout2](media/Map_My_Workout2.png)
+! [Map_My_Workout1](./media/Map_My_Workout1.png)
+! [Map_My_Workout2](./media/Map_My_Workout2.png)
 
 ## Inspiration and Takeaways
 
