@@ -19,6 +19,9 @@ Map My Workout is a full-stack web application that allows users to log their ru
 
 -   Leaflet
 
+! [Map_My_Workout1](media/Map_My_Workout1.png)
+! [Map_My_Workout2](media/Map_My_Workout2.png)
+
 ## Inspiration and Takeaways
 
 All of my life I've been involved in fitness. In high school I played soccer and ran cross country, and even ran at state my junior and senior year. Although I didn't run competitively in college, I've always enjoyed running as a hobby. More recently, I started racing again, with my most recent race being the Chicago 13.1 half-marathon. As most running hobbyists might know, the holy grail of cardio-related apps is Strava. This app has pretty much everything you would want to know about your workouts, except for one thing, a proper way to visualize all of your workouts on a map. While I probably could have used the Strava API directly for a simpler integration along with other benefits, I felt that building my own app from the ground up would be a more beneficial learning experience. This ultimately brought me to the creation of Map My Workout.
