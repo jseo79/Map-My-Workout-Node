@@ -20,6 +20,7 @@ const Map: React.FC<MapProps> = ({ onMapClick, workouts }) => {
 				mapRef.current.remove();
 			}
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const getPosition = () => {
