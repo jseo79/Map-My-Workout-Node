@@ -129,6 +129,13 @@ const Sidebar: React.FC<SidebarProps> = ({
 				className={`${styles.form} ${showForm ? '' : styles.hidden}`}
 				onSubmit={newWorkout}
 			>
+				<button
+					className={styles.close_buttons}
+					type="button"
+					onClick={hideForm}
+				>
+					x
+				</button>
 				<div className={styles.form__row}>
 					<label className={styles.form__label}>Type</label>
 					<select

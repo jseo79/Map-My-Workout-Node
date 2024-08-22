@@ -39,6 +39,7 @@
 }
 
 .form {
+	position: relative;
 	background-color: #42484d;
 	border-radius: 5px;
 	padding: 1.5rem 2.75rem;
@@ -93,4 +94,20 @@
 
 .form__btn {
 	display: none;
+}
+
+.close_buttons {
+	position: absolute;
+	background-color: transparent;
+	border: none;
+	color: #ffffff;
+	left: 385px;
+	top: 0px;
+	font-size: 16px;
+	line-height: 1;
+	width: 15px;
+}
+
+.close_buttons:hover {
+	background-color: #000000;
 }
