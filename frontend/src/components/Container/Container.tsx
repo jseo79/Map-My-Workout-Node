@@ -18,7 +18,6 @@ const MapContainer: React.FC = () => {
 				workout
 			);
 			setWorkouts((prevWorkouts) => [response.data, ...prevWorkouts]);
-			// Optionally fetch updated workouts
 			fetchWorkouts();
 		} catch (error) {
 			console.error('Error adding workout:', error);
@@ -30,7 +29,7 @@ const MapContainer: React.FC = () => {
 			const response = await axios.get(
 				'http://localhost:5001/api/workouts'
 			);
-			setWorkouts(response.data);
+			setWorkouts(response.data.reverse());
 		} catch (error) {
 			console.error('Error fetching workouts:', error);
 		}

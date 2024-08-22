@@ -40,7 +40,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 	const allPositive = (...inputs: number[]) => inputs.every((inp) => inp > 0);
 
 	const hideFormAndResetValues = () => {
-		hideForm();
+		hideForm(); // Hide the form
 		// Reset form fields
 		setDistance('');
 		setDuration('');
@@ -110,7 +110,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
 		if (workout) {
 			addWorkout(workout);
-			hideFormAndResetValues();
+			hideFormAndResetValues(); // Hide the form and reset values
 		}
 	};
 
