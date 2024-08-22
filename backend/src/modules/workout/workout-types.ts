@@ -2,7 +2,9 @@ export interface Workout {
 	// Backend automatically increments id so it is not needed initially in the frontend
 	id?: number;
 
-	userId: number;
+	//Currently using IP address for UserId which is computed by backend
+	userId?: string;
+
 	type: 'running' | 'biking';
 	duration: number;
 	startTime: string;

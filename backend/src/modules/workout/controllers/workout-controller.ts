@@ -6,7 +6,10 @@ import { calculateWorkoutDetails, formatTimesForMySQL } from '../workoutUtils';
 export default class WorkoutController {
 	static async addWorkout(req: Request<Partial<Workout>>, res: Response) {
 		try {
-			const calculatedWorkout = calculateWorkoutDetails(req.body);
+			const ip = req.headers['x-forwarded-for'] || req.ip;
+			const workoutWithUserId = { ...req.body, userID: ip };
+			const calculatedWorkout =
+				calculateWorkoutDetails(workoutWithUserId);
 			const formattedWorkout = formatTimesForMySQL(calculatedWorkout);
 			await WorkoutModel.addWorkout(formattedWorkout);
 			return res.send(req.body);

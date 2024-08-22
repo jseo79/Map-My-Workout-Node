@@ -70,7 +70,6 @@ const Sidebar: React.FC<SidebarProps> = ({
 			}
 
 			workout = {
-				userId: 1,
 				type: 'running',
 				duration: durationValue,
 				startTime: new Date().toISOString(),
@@ -94,7 +93,6 @@ const Sidebar: React.FC<SidebarProps> = ({
 			}
 
 			workout = {
-				userId: 1,
 				type: 'biking',
 				duration: durationValue,
 				startTime: new Date().toISOString(),
