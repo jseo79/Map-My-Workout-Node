@@ -20,7 +20,8 @@ export default class WorkoutController {
 
 	static async getAllWorkouts(req: Request, res: Response) {
 		try {
-			const workouts = await WorkoutModel.getAllWorkouts();
+			const ip = req.headers['x-forwarded-for'] || req.ip;
+			const workouts = await WorkoutModel.getAllWorkouts(String(ip));
 			return res.send(workouts);
 		} catch (e) {
 			console.log(e);

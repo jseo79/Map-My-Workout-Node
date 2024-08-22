@@ -11,9 +11,11 @@ export default class WorkoutModel {
 		}
 	}
 
-	static async getAllWorkouts() {
+	static async getAllWorkouts(userIP: string) {
 		try {
-			return knex<Workout>('workouts').select('*');
+			return knex<Workout>('workouts')
+				.where('userID', userIP)
+				.select('*');
 		} catch (e) {
 			console.log(e);
 			throw e;
