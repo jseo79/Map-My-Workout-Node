@@ -114,10 +114,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 			workout = {
 				type: 'biking',
 				duration: durationValue,
-				startTime: startTimeValue,
-				endTime: new Date(
-					new Date().getTime() + durationValue * 60000
-				).toISOString(),
+				startTime: startTimeValue.toISOString(),
+				endTime: endTimeValue.toISOString(),
 				distanceType: 'miles',
 				distance: distanceValue,
 				latitude: lat,
