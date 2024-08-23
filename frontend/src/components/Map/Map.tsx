@@ -6,9 +6,10 @@ import { Workout } from '../../../../backend/src/modules/workout/workout-types.t
 interface MapProps {
 	onMapClick: (latLng: L.LeafletMouseEvent) => void;
 	workouts: Workout[];
+	latLng: L.LatLng | null;
 }
 
-const Map: React.FC<MapProps> = ({ onMapClick, workouts }) => {
+const Map: React.FC<MapProps> = ({ onMapClick, workouts, latLng }) => {
 	const mapRef = useRef<L.Map | null>(null);
 	const markersRef = useRef<L.Marker[]>([]);
 
@@ -49,6 +50,12 @@ const Map: React.FC<MapProps> = ({ onMapClick, workouts }) => {
 			onMapClick(e);
 		});
 	};
+
+	useEffect(() => {
+		if (latLng && mapRef.current) {
+			mapRef.current.setView(latLng);
+		}
+	}, [latLng]);
 
 	useEffect(() => {
 		if (mapRef.current) {

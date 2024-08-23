@@ -11,6 +11,11 @@ interface SidebarProps {
 	workouts: Workout[];
 	addWorkout: (workout: Workout) => void;
 	handleDeleteWorkout: (id: number) => void;
+	moveToWorkoutLocation: (
+		lat: number,
+		lng: number,
+		updateLatLng: boolean
+	) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({
@@ -20,6 +25,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 	workouts,
 	addWorkout,
 	handleDeleteWorkout,
+	moveToWorkoutLocation,
 }) => {
 	const [workoutType, setWorkoutType] = useState('running');
 	const [distance, setDistance] = useState('');
@@ -194,6 +200,13 @@ const Sidebar: React.FC<SidebarProps> = ({
 					<WorkoutItem
 						key={workout.createdOn}
 						workout={workout}
+						moveToWorkoutLocation={() =>
+							moveToWorkoutLocation(
+								workout.latitude,
+								workout.longitude,
+								!showForm
+							)
+						}
 						onDelete={() => {
 							if (workout.id !== undefined) {
 								handleDeleteWorkout(workout.id);

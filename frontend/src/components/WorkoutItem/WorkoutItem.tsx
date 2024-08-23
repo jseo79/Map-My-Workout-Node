@@ -5,14 +5,20 @@ import styles from './WorkoutItem.module.css';
 interface WorkoutItemProps {
 	workout: Workout;
 	onDelete: () => void;
+	moveToWorkoutLocation: () => void;
 }
 
-const WorkoutItem: React.FC<WorkoutItemProps> = ({ workout, onDelete }) => {
+const WorkoutItem: React.FC<WorkoutItemProps> = ({
+	workout,
+	onDelete,
+	moveToWorkoutLocation,
+}) => {
 	return (
 		<li
 			className={`${styles.workout} ${
 				styles[`workout--${workout.type}`]
 			}`}
+			onClick={moveToWorkoutLocation}
 		>
 			<button
 				className={styles.close_buttons}

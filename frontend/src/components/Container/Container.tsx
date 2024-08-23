@@ -59,6 +59,14 @@ const MapContainer: React.FC = () => {
 		setShowForm(false);
 	};
 
+	const moveToWorkoutLocation = (
+		lat: number,
+		lng: number,
+		updateLatLng: boolean
+	) => {
+		if (updateLatLng) setLatLng(new L.LatLng(lat, lng));
+	};
+
 	return (
 		<div className={styles.container}>
 			<Sidebar
@@ -68,8 +76,13 @@ const MapContainer: React.FC = () => {
 				addWorkout={addWorkout}
 				workouts={workouts}
 				handleDeleteWorkout={handleDeleteWorkout}
+				moveToWorkoutLocation={moveToWorkoutLocation}
 			/>
-			<Map onMapClick={handleMapClick} workouts={workouts} />
+			<Map
+				onMapClick={handleMapClick}
+				workouts={workouts}
+				latLng={latLng}
+			/>
 		</div>
 	);
 };
