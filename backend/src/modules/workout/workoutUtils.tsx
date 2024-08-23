@@ -5,6 +5,8 @@ const formatDate = (date: Date): string => {
 	const options: Intl.DateTimeFormatOptions = {
 		month: 'long',
 		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric',
 	};
 	return new Intl.DateTimeFormat('en-US', options).format(date);
 };
