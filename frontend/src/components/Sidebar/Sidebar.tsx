@@ -27,17 +27,27 @@ const Sidebar: React.FC<SidebarProps> = ({
 	handleDeleteWorkout,
 	moveToWorkoutLocation,
 }) => {
+	const currentTime = new Date(
+		Date.now() - new Date().getTimezoneOffset() * 60000
+	);
 	const [workoutType, setWorkoutType] = useState('running');
 	const [distance, setDistance] = useState('');
 	const [duration, setDuration] = useState('');
 	const [cadence, setCadence] = useState('');
 	const [elevation, setElevation] = useState('');
+	const [startTime, setStartTime] = useState(
+		currentTime.toISOString().slice(0, 16)
+	);
 	const distanceRef = useRef<HTMLInputElement | null>(null);
 
 	const handleWorkoutTypeChange = (
 		e: React.ChangeEvent<HTMLSelectElement>
 	) => {
 		setWorkoutType(e.target.value);
+	};
+
+	const handleStartTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setStartTime(e.target.value);
 	};
 
 	const validInputs = (...inputs: number[]) =>
@@ -52,6 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 		setDuration('');
 		setCadence('');
 		setElevation('');
+		setStartTime(currentTime.toISOString().slice(0, 16));
 	};
 
 	const newWorkout = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,6 +75,10 @@ const Sidebar: React.FC<SidebarProps> = ({
 		const { lat, lng } = latLng;
 		const distanceValue = +distance;
 		const durationValue = +duration;
+		const startTimeValue = new Date(startTime);
+		const endTimeValue = new Date(
+			startTimeValue.getTime() + durationValue * 60000
+		);
 		let workout: Workout | undefined;
 
 		if (workoutType === 'running') {
@@ -78,10 +93,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 			workout = {
 				type: 'running',
 				duration: durationValue,
-				startTime: new Date().toISOString(),
-				endTime: new Date(
-					new Date().getTime() + durationValue * 60000
-				).toISOString(),
+				startTime: startTimeValue.toISOString(),
+				endTime: endTimeValue.toISOString(),
 				distanceType: 'miles',
 				distance: distanceValue,
 				latitude: lat,
@@ -101,7 +114,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 			workout = {
 				type: 'biking',
 				duration: durationValue,
-				startTime: new Date().toISOString(),
+				startTime: startTimeValue,
 				endTime: new Date(
 					new Date().getTime() + durationValue * 60000
 				).toISOString(),
@@ -116,7 +129,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
 		if (workout) {
 			addWorkout(workout);
-			hideFormAndResetValues(); // Hide the form and reset values
+			hideFormAndResetValues();
 		}
 	};
 
@@ -149,6 +162,8 @@ const Sidebar: React.FC<SidebarProps> = ({
 					<input
 						className={`${styles.form__input}`}
 						type="datetime-local"
+						value={startTime}
+						onChange={handleStartTimeChange}
 					/>
 				</div>
 				<div className={styles.form__row}>
