@@ -140,10 +140,21 @@ const Sidebar: React.FC<SidebarProps> = ({
 				>
 					x
 				</button>
+				<div
+					className={`${styles.form__row__stacked} ${styles.full__width}`}
+				>
+					<label className={styles.form__label__start__time}>
+						Start Time
+					</label>
+					<input
+						className={`${styles.form__input}`}
+						type="datetime-local"
+					/>
+				</div>
 				<div className={styles.form__row}>
 					<label className={styles.form__label}>Type</label>
 					<select
-						className={`${styles.form__input} ${styles['form__input--type']}`}
+						className={`${styles.form__input}`}
 						value={workoutType}
 						onChange={handleWorkoutTypeChange}
 					>
@@ -154,7 +165,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 				<div className={styles.form__row}>
 					<label className={styles.form__label}>Distance</label>
 					<input
-						className={`${styles.form__input} ${styles['form__input--distance']}`}
+						className={`${styles.form__input}`}
 						value={distance}
 						onChange={(e) => setDistance(e.target.value)}
 						placeholder="mile"
@@ -164,7 +175,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 				<div className={styles.form__row}>
 					<label className={styles.form__label}>Duration</label>
 					<input
-						className={`${styles.form__input} ${styles['form__input--duration']}`}
+						className={`${styles.form__input}`}
 						value={duration}
 						onChange={(e) => setDuration(e.target.value)}
 						placeholder="min"
@@ -174,7 +185,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 					<div className={styles.form__row}>
 						<label className={styles.form__label}>Cadence</label>
 						<input
-							className={`${styles.form__input} ${styles['form__input--cadence']}`}
+							className={`${styles.form__input}`}
 							value={cadence}
 							onChange={(e) => setCadence(e.target.value)}
 							placeholder="step/min"
@@ -184,7 +195,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 					<div className={styles.form__row}>
 						<label className={styles.form__label}>Elev Gain</label>
 						<input
-							className={`${styles.form__input} ${styles['form__input--elevation']}`}
+							className={`${styles.form__input}`}
 							value={elevation}
 							onChange={(e) => setElevation(e.target.value)}
 							placeholder="feet"
