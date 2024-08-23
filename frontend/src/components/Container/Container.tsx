@@ -14,7 +14,7 @@ const MapContainer: React.FC = () => {
 	const addWorkout = async (workout: Workout) => {
 		try {
 			const response = await axios.post(
-				'http://localhost:5001/api/workouts',
+				'http://localhost:8080/api/workouts',
 				workout
 			);
 			setWorkouts((prevWorkouts) => [response.data, ...prevWorkouts]);
@@ -27,7 +27,7 @@ const MapContainer: React.FC = () => {
 	const fetchWorkouts = async () => {
 		try {
 			const response = await axios.get(
-				'http://localhost:5001/api/workouts'
+				'http://localhost:8080/api/workouts'
 			);
 			setWorkouts(response.data.reverse());
 		} catch (error) {
@@ -41,7 +41,7 @@ const MapContainer: React.FC = () => {
 
 	const handleDeleteWorkout = async (id: number) => {
 		try {
-			await axios.delete(`http://localhost:5001/api/workouts/${id}`);
+			await axios.delete(`http://localhost:8080/api/workouts/${id}`);
 			setWorkouts((prevWorkouts) =>
 				prevWorkouts.filter((workout) => workout.id !== id)
 			);
