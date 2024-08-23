@@ -58,6 +58,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 	const hideFormAndResetValues = () => {
 		hideForm(); // Hide the form
 		// Reset form fields
+		setWorkoutType('running');
 		setDistance('');
 		setDuration('');
 		setCadence('');
@@ -147,7 +148,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 				<button
 					className={styles.close_buttons}
 					type="button"
-					onClick={hideForm}
+					onClick={hideFormAndResetValues}
 				>
 					x
 				</button>
