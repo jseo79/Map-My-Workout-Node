@@ -7,7 +7,7 @@ const knexConnection = knex({
 		port: 3306,
 		user: 'admin',
 		password: 'admin',
-		database: 'dev_db',
+		database: 'Map_My_Workout_dev_db',
 	},
 	migrations: {
 		directory: './migrations',
